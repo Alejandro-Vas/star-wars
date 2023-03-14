@@ -3,8 +3,10 @@ import styles from './styles.module.scss';
 
 function Header() {
   return (
-    <div className={styles.header}>
-      <Logo />
+    <div className={styles.root}>
+      <div className={styles.logo}>
+        <Logo />
+      </div>
     </div>
   );
 }

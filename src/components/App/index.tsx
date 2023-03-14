@@ -1,5 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import MainPage from 'pages/MainPage';
+import '../../index.scss';
 
 import NotFound404Page from 'pages/NotFound404Page/index';
 
