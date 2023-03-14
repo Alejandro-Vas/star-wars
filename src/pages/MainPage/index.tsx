@@ -1,5 +1,6 @@
 import Header from 'components/Header';
 import main from 'assets/illustrations/main.png';
+import Button from 'components/Button';
 import styles from './styles.module.scss';
 
 function MainPage() {
@@ -25,9 +26,9 @@ function MainPage() {
             You can find out all the information about your favorite characters
           </div>
 
-          <button type="button">
-            see more...
-          </button>
+          <Button onClick={() => null}>
+            See more...
+          </Button>
         </div>
 
         <div className={styles.rightBlock}>
