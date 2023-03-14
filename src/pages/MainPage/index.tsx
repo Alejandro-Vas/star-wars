@@ -1,9 +1,14 @@
+import Header from 'components/Header';
 
 function MainPage() {
   return (
-    <div>
-      MAIN
-    </div>
+    <>
+      <Header />
+      <div>
+        ывыв
+      </div>
+    </>
   );
 }
+
 export default MainPage;
