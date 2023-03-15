@@ -3,6 +3,8 @@ import Header from 'components/Header';
 
 import styles from './styles.module.scss';
 
+const data = Array.from(Array(9).keys());
+
 function CharactersPage() {
   return (
     <div className="container">
@@ -24,7 +26,12 @@ function CharactersPage() {
         </div>
 
         <div className={styles.charactersList}>
-          <CharacterItem />
+          {data.map((el, i) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <div key={i} className={styles.character}>
+              <CharacterItem />
+            </div>
+          ))}
         </div>
       </div>
     </div>

@@ -21,7 +21,6 @@ function CharacterItem() {
 
         <Badge text="600BBY" color="green" />
       </div>
-
     </div>
   );
 }
