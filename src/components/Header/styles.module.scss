@@ -14,14 +14,14 @@
     padding-right: 160px
 }
 
-.menuItem {
+.menuItem
+a {
     padding:15px;
     margin: 10px;
     color: white;
     font-size: 25px;
     line-height: 29px;
     position: relative;
-    z-index: 1;
 }
 
 .active:before {
@@ -32,6 +32,8 @@
     width:60%;
     border-bottom: 3px solid #CFDAB0;
 }
+
+
 
 .logo {
     margin-left: 157px;

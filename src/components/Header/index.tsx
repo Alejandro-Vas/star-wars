@@ -1,5 +1,5 @@
 import Logo from 'assets/icons/logo.svg';
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styles from './styles.module.scss';
 
 const menuItems = [
@@ -14,35 +14,26 @@ const menuItems = [
 ];
 
 function Header() {
-  const { pathname } = useLocation();
-
   return (
     <div className={styles.root}>
       <div className={styles.logo}>
-        <Link to="/">
+        <NavLink to="/">
           <Logo />
-        </Link>
+        </NavLink>
       </div>
 
       <div className={styles.menu}>
-        {menuItems.map(({ title, path }) => {
-          const isActive = pathname === path;
-
-          const className = isActive
-            ? `${styles.menuItem} ${styles.active}`
-            : styles.menuItem;
-          console.log(className);
-
-          return (
-            <Link
+        {menuItems.map(({ title, path }) => (
+          <div className={styles.menuItem}>
+            <NavLink
               to={path}
-              className={className}
+              className={({ isActive }) => (isActive ? styles.active : '')}
               key={title}
             >
               {title}
-            </Link>
-          );
-        })}
+            </NavLink>
+          </div>
+        ))}
       </div>
     </div>
   );
