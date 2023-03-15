@@ -17,7 +17,9 @@ function Header() {
   return (
     <div className={styles.root}>
       <div className={styles.logo}>
-        <Logo />
+        <Link to="/">
+          <Logo />
+        </Link>
       </div>
 
       <div className={styles.menu}>
