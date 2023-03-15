@@ -24,11 +24,10 @@ function Header() {
 
       <div className={styles.menu}>
         {menuItems.map(({ title, path }) => (
-          <div className={styles.menuItem}>
+          <div className={styles.menuItem} key={title}>
             <NavLink
               to={path}
               className={({ isActive }) => (isActive ? styles.active : '')}
-              key={title}
             >
               {title}
             </NavLink>
