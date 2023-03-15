@@ -1,6 +1,7 @@
 import CharacterItem from 'components/CharacterItem';
 import Header from 'components/Header';
 import Modal from 'components/Modal';
+import useOnClickOutside from 'hooks/useaAnClickOutside';
 import { useState } from 'react';
 
 import styles from './styles.module.scss';
@@ -9,10 +10,12 @@ const data = Array.from(Array(9).keys());
 
 function CharactersPage() {
   const [isOpen, setIsOpen] = useState(true);
-
   const onClose = () => {
     setIsOpen(false);
   };
+
+  useOnClickOutside(ref, onClose);
+
   console.log(isOpen);
   return (
     <div className="container">
