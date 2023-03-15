@@ -1,22 +1,24 @@
-import { ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './styles.module.scss';
 
 interface IButton {
-    children: ReactNode
-    onClick: () => void;
-    variant?: 'yellow' | 'green'
+    text: string;
+    to: string;
+    variant?: 'yellow' | 'green';
 }
 
 function Button({
-  children,
-  onClick = () => null,
+  text,
   variant = 'yellow',
+  to,
 }: IButton) {
   const className = `${styles.root} ${variant === 'green' ? styles.green : ''}`;
 
   return (
-    <button type="button" onClick={onClick} className={className}>
-      {children}
+    <button type="button" className={className}>
+      <Link to={to}>
+        {text}
+      </Link>
     </button>
   );
 }

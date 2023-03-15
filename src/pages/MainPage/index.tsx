@@ -26,9 +26,7 @@ function MainPage() {
             You can find out all the information about your favorite characters
           </div>
 
-          <Button onClick={() => null}>
-            See more...
-          </Button>
+          <Button to="/characters" text="See more..." />
         </div>
 
         <div className={styles.rightBlock}>

@@ -1,4 +1,5 @@
 import Logo from 'assets/icons/logo.svg';
+import { Link } from 'react-router-dom';
 import styles from './styles.module.scss';
 
 const menuItems = [
@@ -8,7 +9,7 @@ const menuItems = [
   },
   {
     title: 'Characters',
-    path: 'Characters',
+    path: '/characters',
   },
 ];
 
@@ -18,11 +19,12 @@ function Header() {
       <div className={styles.logo}>
         <Logo />
       </div>
+
       <div className={styles.menu}>
         {menuItems.map(({ title, path }) => (
-          <a href={path} className={styles.menuItem}>
+          <Link to={path} className={styles.menuItem}>
             {title}
-          </a>
+          </Link>
         ))}
       </div>
     </div>
