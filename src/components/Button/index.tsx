@@ -15,11 +15,11 @@ function Button({
   const className = `${styles.root} ${variant === 'green' ? styles.green : ''}`;
 
   return (
-    <button type="button" className={className}>
-      <Link to={to}>
+    <Link to={to}>
+      <button type="button" className={className}>
         {text}
-      </Link>
-    </button>
+      </button>
+    </Link>
   );
 }
 

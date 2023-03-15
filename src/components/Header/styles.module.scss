@@ -15,9 +15,22 @@
 }
 
 .menuItem {
+    padding:15px;
+    margin: 10px;
     color: white;
     font-size: 25px;
     line-height: 29px;
+    position: relative;
+    z-index: 1;
+}
+
+.active:before {
+    content: "";
+    position: absolute;
+    right: 20%;
+    bottom: 0;
+    width:60%;
+    border-bottom: 3px solid #CFDAB0;
 }
 
 .logo {

@@ -1,5 +1,5 @@
 import Logo from 'assets/icons/logo.svg';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styles from './styles.module.scss';
 
 const menuItems = [
@@ -14,6 +14,8 @@ const menuItems = [
 ];
 
 function Header() {
+  const { pathname } = useLocation();
+
   return (
     <div className={styles.root}>
       <div className={styles.logo}>
@@ -23,11 +25,24 @@ function Header() {
       </div>
 
       <div className={styles.menu}>
-        {menuItems.map(({ title, path }) => (
-          <Link to={path} className={styles.menuItem}>
-            {title}
-          </Link>
-        ))}
+        {menuItems.map(({ title, path }) => {
+          const isActive = pathname === path;
+
+          const className = isActive
+            ? `${styles.menuItem} ${styles.active}`
+            : styles.menuItem;
+          console.log(className);
+
+          return (
+            <Link
+              to={path}
+              className={className}
+              key={title}
+            >
+              {title}
+            </Link>
+          );
+        })}
       </div>
     </div>
   );
