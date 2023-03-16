@@ -5,13 +5,17 @@ import Filter from 'components/Filter/index';
 import useOnClickOutside from 'hooks/useOnClickOutside';
 import { useCallback, useRef, useState } from 'react';
 
-import styles from './styles.module.scss';
+import { useGetCharactersQuery } from 'store/api/swApi';
 
-const data = Array.from(Array(9).keys());
+import styles from './styles.module.scss';
 
 function CharactersPage() {
   const ref = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
+
+  const { data } = useGetCharactersQuery();
+
+  const { count = '', results: characters = [] } = data || {};
 
   const onClose = useCallback(() => {
     setIsOpen(false);
@@ -40,7 +44,9 @@ function CharactersPage() {
 
         <div className={styles.header}>
           <h1>
-            60 Peoples for you to choose your favorite
+            {count}
+            {' '}
+            Peoples for you to choose your favorite
           </h1>
         </div>
 
@@ -49,17 +55,17 @@ function CharactersPage() {
         </div>
 
         <div className={styles.charactersList}>
-          {data.map((el, i) => (
+          {characters?.map((character) => (
             <div
               // eslint-disable-next-line react/no-array-index-key
-              key={i}
+              key={character.name}
               className={styles.character}
               onClick={onOpen}
               onKeyDown={() => null}
               role="button"
               tabIndex={-1}
             >
-              <CharacterItem />
+              <CharacterItem character={character} />
             </div>
           ))}
         </div>

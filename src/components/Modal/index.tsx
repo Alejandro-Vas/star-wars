@@ -52,11 +52,11 @@ const Modal = forwardRef<HTMLDivElement | null, IModal>(({ onClose }, ref) => (
 
           <div className={styles.properties}>
             <div className={styles.property}>
-              <Property amount={125} type="height" />
+              <Property amount="125" type="height" />
             </div>
 
             <div className={styles.property}>
-              <Property amount={49} type="mass" />
+              <Property amount="49" type="mass" />
             </div>
           </div>
         </div>

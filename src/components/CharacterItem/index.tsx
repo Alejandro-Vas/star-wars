@@ -2,24 +2,37 @@ import Badge from 'components/Badge';
 import Property from 'components/Property';
 
 import styles from './styles.module.scss';
+import { ICharacterEntity } from '../../interfaces/index';
 
-function CharacterItem() {
+interface ICharacterItem {
+  character:ICharacterEntity
+}
+
+function CharacterItem({ character }:ICharacterItem) {
+  const {
+    name,
+    height,
+    mass,
+    birth_year: birthYear,
+    gender,
+  } = character;
+
   return (
     <div className={styles.root}>
       <div className={styles.title}>
-        Chewbacca
+        {name}
       </div>
 
       <div className={styles.wrapper}>
-        <Property amount={125} type="height" />
+        <Property amount={height} type="height" />
 
-        <Property amount={49} type="mass" />
+        <Property amount={mass} type="mass" />
       </div>
 
       <div className={styles.wrapper}>
-        <Badge text="male" color="green" />
+        <Badge text={gender} color="green" />
 
-        <Badge text="600BBY" color="green" />
+        <Badge text={birthYear} color="green" />
       </div>
     </div>
   );

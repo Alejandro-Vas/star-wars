@@ -1,7 +1,7 @@
 import styles from './styles.module.scss';
 
 interface IProperty {
-    amount: number;
+    amount: string;
     type: 'height' | 'mass'
 }
 
