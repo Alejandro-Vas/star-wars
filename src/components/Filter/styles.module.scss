@@ -28,7 +28,6 @@
 .dropDownList {
     top: 40px;
     position: absolute;
-    padding-left: 32px;
     width: 150px;
     z-index: 1;
     background: #F2F2F2;    
@@ -43,6 +42,7 @@
 }
 
 .listItem {
+    padding-left: 32px;
     list-style: none;
     margin-bottom: 10px;
     cursor:pointer;
