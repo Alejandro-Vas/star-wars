@@ -1,0 +1,33 @@
+.root {
+    background: #17002F;
+    height: 100%;
+}
+
+.content {
+    position:relative;
+    font-weight: 700;
+    font-size: 700px;
+    line-height: 818px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+
+    @media (width <= 1400px) {
+        font-size: 40vw;
+    }   
+}
+
+.image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 690px;
+    height: 622px;
+    margin: auto;
+    top: 0; left: 0; bottom: 0; right: 0; 
+
+    @media (width <= 1400px) {
+        max-width:100%;
+        height:auto;
+        width: 40%;
+    } 
+}

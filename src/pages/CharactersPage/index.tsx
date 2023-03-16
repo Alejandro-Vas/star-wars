@@ -1,10 +1,10 @@
 import CharacterItem from 'components/CharacterItem';
 import Header from 'components/Header';
 import Modal from 'components/Modal';
+import Filter from 'components/Filter/index';
 import useOnClickOutside from 'hooks/useOnClickOutside';
 import { useCallback, useRef, useState } from 'react';
 
-import Filter from 'components/Filter/index';
 import styles from './styles.module.scss';
 
 const data = Array.from(Array(9).keys());
