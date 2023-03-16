@@ -3,19 +3,31 @@ import Header from 'components/Header';
 import Modal from 'components/Modal';
 import Filter from 'components/Filter/index';
 import useOnClickOutside from 'hooks/useOnClickOutside';
-import { useCallback, useRef, useState } from 'react';
+import {
+  useCallback, useMemo, useRef, useState,
+} from 'react';
 
 import { useGetCharactersQuery } from 'store/api/swApi';
 
+import Loader from 'components/Loader';
+import { useTypedSelector } from 'hooks/useTypedSelector';
 import styles from './styles.module.scss';
 
 function CharactersPage() {
   const ref = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
 
-  const { data } = useGetCharactersQuery();
+  const eyeColor = useTypedSelector((state) => state.filter.eyeColor);
+
+  const { data, isLoading, isFetching } = useGetCharactersQuery();
 
   const { count = '', results: characters = [] } = data || {};
+
+  const filteredCharacters = useMemo(() => {
+    if (eyeColor === 'All') return characters;
+
+    return characters?.filter((character) => character.eye_color === eyeColor.toLocaleLowerCase());
+  }, [characters, eyeColor]);
 
   const onClose = useCallback(() => {
     setIsOpen(false);
@@ -54,21 +66,25 @@ function CharactersPage() {
           <Filter />
         </div>
 
-        <div className={styles.charactersList}>
-          {characters?.map((character) => (
-            <div
-              // eslint-disable-next-line react/no-array-index-key
-              key={character.name}
-              className={styles.character}
-              onClick={onOpen}
-              onKeyDown={() => null}
-              role="button"
-              tabIndex={-1}
-            >
-              <CharacterItem character={character} />
+        {(isLoading || isFetching)
+          ? <Loader />
+          : (
+            <div className={styles.charactersList}>
+              {filteredCharacters?.map((character) => (
+                <div
+                  key={character.name}
+                  className={styles.character}
+                  onClick={onOpen}
+                  onKeyDown={() => null}
+                  role="button"
+                  tabIndex={-1}
+                >
+                  <CharacterItem character={character} />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          )}
+
       </div>
     </div>
   );

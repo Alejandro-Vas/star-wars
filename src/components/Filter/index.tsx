@@ -1,13 +1,15 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
+import { filters } from 'constants/index';
 import styles from './styles.module.scss';
+import useActions from '../../hooks/useActions';
 
-const options = ['All', 'Brown', 'Red', 'blue', 'white'];
+const { eyeColors: options } = filters;
 
 function Filter() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string>(options[0]);
 
-  const onToggle = () => setIsOpen(!isOpen);
+  const onToggle = () => setIsOpen((open) => !open);
 
   const onSelect = (value:string) => () => {
     setSelectedOption(value);
@@ -18,6 +20,12 @@ function Filter() {
     () => options.filter((option) => option !== selectedOption),
     [selectedOption],
   );
+
+  const { setActiveFilter } = useActions();
+
+  useEffect(() => {
+    setActiveFilter({ type: 'eyeColor', value: selectedOption });
+  });
 
   return (
     <div className={styles.root}>

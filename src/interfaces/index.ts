@@ -1,3 +1,5 @@
+import { filters } from 'constants/index';
+
 export interface ICharacterEntity {
     name: string;
     height: string;
