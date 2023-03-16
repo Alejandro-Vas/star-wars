@@ -4,7 +4,6 @@
   "plugins": [
     "@typescript-eslint",
     "react",
-    "jsx-a11y",
     "import",
     "react-hooks",
     "jest"

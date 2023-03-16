@@ -1,5 +1,5 @@
 // import { store } from 'store/store';
-import { Provider } from 'react-redux';
+// import { Provider } from 'react-redux';
 
 import App from 'components/App';
 

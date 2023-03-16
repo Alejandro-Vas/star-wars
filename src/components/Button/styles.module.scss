@@ -1,0 +1,20 @@
+.root {
+    display: block;
+    padding: 18px 57px 18px 57px;
+    background: #FFC107;
+    box-shadow: inset 0px -9px 0px rgba(0, 0, 0, 0.18);
+    border-radius: 11px;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 27px;
+
+    &:hover{
+        opacity: 0.7;
+        cursor:pointer;
+        transition: all ease 0.2s
+    }
+}
+
+.green {
+    background: #73D677;
+}
