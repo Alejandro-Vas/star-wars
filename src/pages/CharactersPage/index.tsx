@@ -2,9 +2,7 @@ import CharacterItem from 'components/CharacterItem';
 import Header from 'components/Header';
 import Modal from 'components/Modal';
 import useOnClickOutside from 'hooks/useOnClickOutside';
-import {
-  RefObject, useCallback, useRef, useState,
-} from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 import styles from './styles.module.scss';
 
@@ -51,11 +49,14 @@ function CharactersPage() {
 
         <div className={styles.charactersList}>
           {data.map((el, i) => (
-            // eslint-disable-next-line react/no-array-index-key
             <div
+              // eslint-disable-next-line react/no-array-index-key
               key={i}
               className={styles.character}
               onClick={onOpen}
+              onKeyDown={() => null}
+              role="button"
+              tabIndex={-1}
             >
               <CharacterItem />
             </div>
