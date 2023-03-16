@@ -7,12 +7,16 @@
   font-family: 'Karla';
 }
 
+
 strong {
   font-weight: 700;
 }
 
-body {
+html, 
+body,
+#root {
   margin: 0;
+  height: 100vh
 }
 
 a {
@@ -21,6 +25,7 @@ a {
 }
 
 .container {
- max-width: 1440px;
- margin: 0 auto;
+  max-width: 1440px;
+  margin: 0 auto;
+  height:100%
 }
