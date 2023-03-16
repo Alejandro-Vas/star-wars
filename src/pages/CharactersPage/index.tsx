@@ -18,6 +18,10 @@ function CharactersPage() {
     setIsOpen(false);
   }, []);
 
+  const onOpen = useCallback(() => {
+    setIsOpen(true);
+  }, []);
+
   useOnClickOutside(ref, onClose);
 
   return (
@@ -48,7 +52,11 @@ function CharactersPage() {
         <div className={styles.charactersList}>
           {data.map((el, i) => (
             // eslint-disable-next-line react/no-array-index-key
-            <div key={i} className={styles.character}>
+            <div
+              key={i}
+              className={styles.character}
+              onClick={onOpen}
+            >
               <CharacterItem />
             </div>
           ))}
