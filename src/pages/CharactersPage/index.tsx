@@ -4,13 +4,14 @@ import Modal from 'components/Modal';
 import useOnClickOutside from 'hooks/useOnClickOutside';
 import { useCallback, useRef, useState } from 'react';
 
+import Filter from 'components/Filter/index';
 import styles from './styles.module.scss';
 
 const data = Array.from(Array(9).keys());
 
 function CharactersPage() {
   const ref = useRef(null);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const onClose = useCallback(() => {
     setIsOpen(false);
@@ -44,7 +45,7 @@ function CharactersPage() {
         </div>
 
         <div className={styles.filter}>
-          color eye
+          <Filter />
         </div>
 
         <div className={styles.charactersList}>
