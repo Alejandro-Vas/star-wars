@@ -1,26 +1,32 @@
 import CharacterItem from 'components/CharacterItem';
 import Header from 'components/Header';
 import Modal from 'components/Modal';
-import useOnClickOutside from 'hooks/useaAnClickOutside';
-import { useState } from 'react';
+import useOnClickOutside from 'hooks/useOnClickOutside';
+import {
+  RefObject, useCallback, useRef, useState,
+} from 'react';
 
 import styles from './styles.module.scss';
 
 const data = Array.from(Array(9).keys());
 
 function CharactersPage() {
+  const ref = useRef(null);
   const [isOpen, setIsOpen] = useState(true);
-  const onClose = () => {
+
+  const onClose = useCallback(() => {
     setIsOpen(false);
-  };
+  }, []);
 
   useOnClickOutside(ref, onClose);
 
-  console.log(isOpen);
   return (
     <div className="container">
-
-      {isOpen && <Modal onClose={onClose} />}
+      {isOpen && (
+        <div id="id">
+          <Modal onClose={onClose} ref={ref} />
+        </div>
+      )}
 
       <Header />
 
