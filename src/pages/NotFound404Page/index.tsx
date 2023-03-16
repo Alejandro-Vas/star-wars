@@ -1,4 +1,5 @@
 import image404 from 'assets/illustrations/image404.png';
+import Button from 'components/Button';
 import styles from './styles.module.scss';
 
 function NotFound404Page() {
@@ -8,7 +9,10 @@ function NotFound404Page() {
         <div className={styles.content}>
           404
           <img src={image404} alt="404" className={styles.image} />
+
         </div>
+
+        <Button text="return" to="/" center />
       </div>
     </div>
   );
