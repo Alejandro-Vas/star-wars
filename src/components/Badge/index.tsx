@@ -5,6 +5,7 @@ interface IBadge {
     color: string
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function Badge({ text, color }: IBadge) {
   return (
     <div className={styles.root}>
