@@ -12,15 +12,16 @@ import { useGetCharactersQuery } from 'store/api/swApi';
 import Loader from 'components/Loader';
 import { useTypedSelector } from 'hooks/useTypedSelector';
 import styles from './styles.module.scss';
+import { ICharacterEntity } from '../../interfaces/index';
 
 function CharactersPage() {
   const ref = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [activeCharacter, setActiveCharacter] = useState <ICharacterEntity | null>(null);
 
   const eyeColor = useTypedSelector((state) => state.filter.eyeColor);
 
   const { data, isLoading, isFetching } = useGetCharactersQuery();
-
   const { count = '', results: characters = [] } = data || {};
 
   const filteredCharacters = useMemo(() => {
@@ -33,8 +34,9 @@ function CharactersPage() {
     setIsOpen(false);
   }, []);
 
-  const onOpen = useCallback(() => {
+  const onOpen = useCallback((character: ICharacterEntity) => {
     setIsOpen(true);
+    setActiveCharacter(character);
   }, []);
 
   useOnClickOutside(ref, onClose);
@@ -43,7 +45,11 @@ function CharactersPage() {
     <div className="container">
       {isOpen && (
         <div id="id">
-          <Modal onClose={onClose} ref={ref} />
+          <Modal
+            onClose={onClose}
+            ref={ref}
+            character={activeCharacter}
+          />
         </div>
       )}
 
@@ -74,7 +80,7 @@ function CharactersPage() {
                 <div
                   key={character.name}
                   className={styles.character}
-                  onClick={onOpen}
+                  onClick={() => onOpen(character)}
                   onKeyDown={() => null}
                   role="button"
                   tabIndex={-1}
