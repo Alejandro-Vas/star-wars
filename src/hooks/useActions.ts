@@ -1,15 +1,15 @@
-// import { useDispatch } from 'react-redux';
-// import { bindActionCreators } from 'redux';
+import { useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { filterActions } from 'store/slices/filter';
 
-// const AllActions = {
-// };
+const AllActions = {
+  ...filterActions,
+};
 
-// const useActions = () => {
-//   const dispatch = useDispatch();
+const useActions = () => {
+  const dispatch = useDispatch();
 
-//   return bindActionCreators(AllActions, dispatch);
-// };
+  return bindActionCreators(AllActions, dispatch);
+};
 
-// export default useActions;
-
-export default null;
+export default useActions;

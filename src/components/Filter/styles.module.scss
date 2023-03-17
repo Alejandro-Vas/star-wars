@@ -1,0 +1,54 @@
+@import "styles/variables.scss";
+
+.root {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.dropDownContainer {
+    position: relative;
+    height: 30px
+}
+
+.dropDownHeader {
+    cursor:pointer;
+    width: 150px;
+    padding: 3px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    background: $paper;
+    box-shadow: 2px 2px 2px rgba(33, 33, 33, 0.1);
+    border-radius: 4px;
+}
+
+.dropDownListContainer {
+    margin-top: 10px;
+}
+
+.dropDownList {
+    top: 40px;
+    position: absolute;
+    width: 150px;
+    z-index: 1;
+    background: $paper;    
+    box-shadow: 4px 4px 8px rgba(1, 28, 64, 0.2);
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-weight: 500;
+        &:first-child {
+            padding-top: 5px;
+        }
+
+}
+
+.listItem {
+    padding-left: 32px;
+    list-style: none;
+    margin-bottom: 10px;
+    cursor:pointer;
+
+    &:hover {
+        opacity: 0.5
+    }
+}

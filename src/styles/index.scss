@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
 
+@import "styles/variables.scss";
+
 * {
   margin: 0;
   padding: 0;
@@ -7,12 +9,16 @@
   font-family: 'Karla';
 }
 
+
 strong {
   font-weight: 700;
 }
 
-body {
+html, 
+body,
+#root {
   margin: 0;
+  height: 100vh
 }
 
 a {
@@ -21,6 +27,7 @@ a {
 }
 
 .container {
- max-width: 1440px;
- margin: 0 auto;
+  max-width: 1440px;
+  margin: 0 auto;
+  height:100%
 }

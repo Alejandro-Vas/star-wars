@@ -21,9 +21,10 @@ export default {
       hooks: resolve(__dirname, 'src/hooks'),
       pages: resolve(__dirname, 'src/pages'),
       react: join(__dirname, 'node_modules', 'react'),
-      theme: resolve(__dirname, 'src/theme'),
       interfaces: resolve(__dirname, 'src/interfaces'),
       store: resolve(__dirname, 'src/store'),
+      utils: resolve(__dirname, 'src/utils'),
+      styles: resolve(__dirname, 'src/styles'),
     },
   },
 
