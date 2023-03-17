@@ -100,14 +100,18 @@ function CharactersPage() {
             </div>
           )}
 
-        <div className={styles.button}>
-          <Button
-            onClick={handleLoadMore}
-            text="Load more"
-            center
-            disabled={isLoading || isFetching || isAllLoaded}
-          />
-        </div>
+        {isLoading || isFetching
+          ? <Loader />
+          : (
+            <div className={styles.button}>
+              <Button
+                onClick={handleLoadMore}
+                text="Load more"
+                center
+                disabled={isLoading || isFetching || isAllLoaded}
+              />
+            </div>
+          )}
       </div>
     </div>
   );
