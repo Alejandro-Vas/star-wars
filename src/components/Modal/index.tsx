@@ -2,6 +2,7 @@ import { forwardRef } from 'react';
 import CloseIcon from 'assets/icons/close.svg';
 import hermaphrodite from 'assets/illustrations/hermaphrodite.png';
 import Property from 'components/Property';
+import Helpers from 'utils';
 import styles from './styles.module.scss';
 import Badge from '../Badge/index';
 import { ICharacterEntity } from '../../interfaces/index';
@@ -61,13 +62,23 @@ const Modal = forwardRef<HTMLDivElement | null, IModal>(
               </h2>
 
               <div className={styles.description}>
-                hair color:
-                {' '}
-                {hairColor}
-                <br />
-                skin color:
-                {' '}
-                {skinColor}
+                {Helpers.isPropertyValid(hairColor) && (
+                <>
+                  hair color:
+                  {' '}
+                  {hairColor}
+                  <br />
+                </>
+                )}
+
+                {Helpers.isPropertyValid(skinColor) && (
+                <>
+                  skin color:
+                  {' '}
+                  {skinColor}
+                  <br />
+                </>
+                )}
               </div>
 
               <div className={styles.properties}>
