@@ -43,6 +43,9 @@
 }
 
 .leftBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding-top: 50px;
   text-align: center;
   width: 341px;
