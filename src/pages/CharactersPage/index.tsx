@@ -106,7 +106,7 @@ function CharactersPage() {
             <div className={styles.button}>
               <Button
                 onClick={handleLoadMore}
-                text="Load more"
+                text={isAllLoaded ? 'All people loaded' : 'Load more'}
                 center
                 disabled={isLoading || isFetching || isAllLoaded}
               />
