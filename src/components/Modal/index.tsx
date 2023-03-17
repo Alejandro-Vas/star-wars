@@ -27,9 +27,6 @@ const Modal = forwardRef<HTMLDivElement | null, IModal>(
       return null;
     }
 
-    // helpers utils
-    const invalidValues = ['n/a', 'unknown'];
-
     return (
       <div className={styles.modal}>
         <div className={styles.modalBody}>
