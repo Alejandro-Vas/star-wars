@@ -1,7 +1,9 @@
+@import "styles/variables.scss";
+
 .root {
     padding-top: 128px;
     display: flex;
-    background: linear-gradient(180deg, #1F2A63 0%, #17002F 100%);
+    background: linear-gradient(180deg, $backgroundLight 0%, $backgroundDark 100%);
     color: white;
     // TODO to variables
     height: calc(100% - 93px)

@@ -1,6 +1,8 @@
+@import "styles/variables.scss";
+
 .root {
     height: 93px;
-    background: #1F2A63;
+    background: $backgroundLight;
     display: flex;
     justify-content: space-between;
     position: relative;

@@ -30,9 +30,9 @@ function CharacterItem({ character }:ICharacterItem) {
       </div>
 
       <div className={styles.wrapper}>
-        <Badge text={gender} color="green" />
+        <Badge text={gender} />
 
-        <Badge text={birthYear} color="green" />
+        <Badge text={birthYear} />
       </div>
     </div>
   );

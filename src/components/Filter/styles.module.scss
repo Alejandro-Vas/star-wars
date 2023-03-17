@@ -1,3 +1,4 @@
+@import "styles/variables.scss";
 
 .root {
     display: flex;
@@ -16,7 +17,7 @@
     padding: 3px;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
     text-align: center;
-    background: #F2F2F2;
+    background: $paper;
     box-shadow: 2px 2px 2px rgba(33, 33, 33, 0.1);
     border-radius: 4px;
 }
@@ -30,7 +31,7 @@
     position: absolute;
     width: 150px;
     z-index: 1;
-    background: #F2F2F2;    
+    background: $paper;    
     box-shadow: 4px 4px 8px rgba(1, 28, 64, 0.2);
     border-radius: 8px;
     box-sizing: border-box;

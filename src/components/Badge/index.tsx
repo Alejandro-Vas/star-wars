@@ -3,17 +3,33 @@ import styles from './styles.module.scss';
 
 interface IBadge {
     text: string;
-    color: string
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-function Badge({ text, color }: IBadge) {
+function Badge({ text }: IBadge) {
   if (!Helpers.isPropertyValid(text)) {
     return null;
   }
 
+  const getClassNameByColor = () => {
+    switch (text) {
+      case 'female':
+        return styles.female;
+      case 'male':
+        return styles.male;
+      case 'hermaphrodite':
+        return styles.hermaphrodite;
+      default:
+        return '';
+    }
+  };
+
+  const color = getClassNameByColor();
+
+  console.log(color);
+
   return (
-    <div className={styles.root}>
+    <div className={`${styles.root} ${color}`}>
       {text}
     </div>
   );

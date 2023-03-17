@@ -2,7 +2,7 @@ import { store } from 'store/store';
 import { Provider } from 'react-redux';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import MainPage from 'pages/MainPage';
-import '../../index.scss';
+import 'styles/index.scss';
 
 import NotFound404Page from 'pages/NotFound404Page/index';
 import CharactersPage from 'pages/CharactersPage';

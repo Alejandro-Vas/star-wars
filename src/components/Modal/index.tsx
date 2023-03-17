@@ -50,9 +50,9 @@ const Modal = forwardRef<HTMLDivElement | null, IModal>(
               </div>
 
               <div className={styles.badges}>
-                <Badge text={gender} color="green" />
+                <Badge text={gender} />
 
-                <Badge text={birthYear} color="green" />
+                <Badge text={birthYear} />
               </div>
             </div>
 

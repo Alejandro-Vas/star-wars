@@ -1,5 +1,7 @@
+@import "styles/variables.scss";
+
 .root {
-    background: #17002F;
+    background: $backgroundDark;
     height: 100%;
 }
 

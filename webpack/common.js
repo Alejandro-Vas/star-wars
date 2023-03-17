@@ -24,6 +24,7 @@ export default {
       interfaces: resolve(__dirname, 'src/interfaces'),
       store: resolve(__dirname, 'src/store'),
       utils: resolve(__dirname, 'src/utils'),
+      styles: resolve(__dirname, 'src/styles'),
     },
   },
 
