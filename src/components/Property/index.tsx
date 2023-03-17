@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import Helpers from 'utils';
 import styles from './styles.module.scss';
 
@@ -24,4 +25,4 @@ function Property({ amount, type }: IProperty) {
   );
 }
 
-export default Property;
+export default memo(Property);

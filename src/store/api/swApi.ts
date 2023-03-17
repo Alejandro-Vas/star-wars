@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { ICharactersResponse } from '../../interfaces/index';
+import { ICharactersResponse } from 'interfaces/index';
 
 const API_URL = 'https://swapi.dev/api';
 

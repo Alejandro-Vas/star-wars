@@ -1,3 +1,5 @@
+import { genders } from 'constants/index';
+import { memo } from 'react';
 import Helpers from 'utils/index';
 import styles from './styles.module.scss';
 
@@ -13,11 +15,11 @@ function Badge({ text }: IBadge) {
 
   const getClassNameByColor = () => {
     switch (text) {
-      case 'female':
+      case genders.female:
         return styles.female;
-      case 'male':
+      case genders.male:
         return styles.male;
-      case 'hermaphrodite':
+      case genders.hermaphrodite:
         return styles.hermaphrodite;
       default:
         return '';
@@ -26,8 +28,6 @@ function Badge({ text }: IBadge) {
 
   const color = getClassNameByColor();
 
-  console.log(color);
-
   return (
     <div className={`${styles.root} ${color}`}>
       {text}
@@ -35,4 +35,4 @@ function Badge({ text }: IBadge) {
   );
 }
 
-export default Badge;
+export default memo(Badge);

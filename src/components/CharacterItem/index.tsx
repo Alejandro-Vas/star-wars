@@ -1,8 +1,9 @@
 import Badge from 'components/Badge';
 import Property from 'components/Property';
 
+import { memo } from 'react';
+import { ICharacterEntity } from 'interfaces/index';
 import styles from './styles.module.scss';
-import { ICharacterEntity } from '../../interfaces/index';
 
 interface ICharacterItem {
   character:ICharacterEntity
@@ -38,4 +39,4 @@ function CharacterItem({ character }:ICharacterItem) {
   );
 }
 
-export default CharacterItem;
+export default memo(CharacterItem);

@@ -1,19 +1,19 @@
-import CharacterItem from 'components/CharacterItem';
-import Header from 'components/Header';
-import Modal from 'components/Modal';
-import Filter from 'components/Filter/index';
-import useOnClickOutside from 'hooks/useOnClickOutside';
 import {
   useCallback, useMemo, useRef, useState,
 } from 'react';
 
-import { useGetCharactersQuery } from 'store/api/swApi';
-
+import CharacterItem from 'components/CharacterItem';
+import Header from 'components/Header';
+import Modal from 'components/Modal';
+import Filter from 'components/Filter';
 import Loader from 'components/Loader';
-import { useTypedSelector } from 'hooks/useTypedSelector';
 import Button from 'components/Button';
+
+import useOnClickOutside from 'hooks/useOnClickOutside';
+import { useGetCharactersQuery } from 'store/api/swApi';
+import { useTypedSelector } from 'hooks/useTypedSelector';
+import { ICharacterEntity } from 'interfaces/index';
 import styles from './styles.module.scss';
-import { ICharacterEntity } from '../../interfaces/index';
 
 function CharactersPage() {
   const [page, setPage] = useState(1);

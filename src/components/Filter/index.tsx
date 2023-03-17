@@ -1,7 +1,7 @@
 import { useMemo, useState, useEffect } from 'react';
 import { filters } from 'constants/index';
+import useActions from 'hooks/useActions';
 import styles from './styles.module.scss';
-import useActions from '../../hooks/useActions';
 
 const { eyeColors: options } = filters;
 

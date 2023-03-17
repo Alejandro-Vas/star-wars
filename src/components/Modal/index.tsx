@@ -1,16 +1,26 @@
 import { forwardRef } from 'react';
-import CloseIcon from 'assets/icons/close.svg';
-import hermaphrodite from 'assets/illustrations/hermaphrodite.png';
 import Property from 'components/Property';
+import Badge from 'components/Badge/index';
+import { ICharacterEntity } from 'interfaces/index';
 import Helpers from 'utils';
+
+import hermaphrodite from 'assets/illustrations/hermaphrodite.png';
+import male from 'assets/illustrations/male.png';
+import female from 'assets/illustrations/female.png';
+import CloseIcon from 'assets/icons/close.svg';
+import { genders } from 'constants/index';
 import styles from './styles.module.scss';
-import Badge from '../Badge/index';
-import { ICharacterEntity } from '../../interfaces/index';
 
 interface IModal {
   onClose: () => void
   character: ICharacterEntity | null
 }
+
+const imgMap = {
+  [genders.male]: male,
+  [genders.female]: female,
+  [genders.hermaphrodite]: hermaphrodite,
+};
 
 const Modal = forwardRef<HTMLDivElement | null, IModal>(
   ({ onClose, character }, ref) => {
@@ -27,6 +37,8 @@ const Modal = forwardRef<HTMLDivElement | null, IModal>(
     if (!character) {
       return null;
     }
+
+    const image = imgMap[gender] || hermaphrodite;
 
     return (
       <div className={styles.modal}>
@@ -46,7 +58,7 @@ const Modal = forwardRef<HTMLDivElement | null, IModal>(
           <div className={styles.content} ref={ref}>
             <div className={styles.leftBlock}>
               <div>
-                <img src={hermaphrodite} alt="gender" />
+                <img src={image} alt="gender" />
               </div>
 
               <div className={styles.badges}>
@@ -88,7 +100,6 @@ const Modal = forwardRef<HTMLDivElement | null, IModal>(
               </div>
             </div>
           </div>
-
         </div>
       </div>
     );
