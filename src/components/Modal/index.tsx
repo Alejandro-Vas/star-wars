@@ -64,31 +64,27 @@ const Modal = forwardRef<HTMLDivElement | null, IModal>(
               <div className={styles.description}>
                 {Helpers.isPropertyValid(hairColor) && (
                 <>
-                  hair color:
-                  {' '}
-                  {hairColor}
+                  {`hair color: ${hairColor}`}
                   <br />
                 </>
                 )}
 
-                {Helpers.isPropertyValid(skinColor) && (
-                <>
-                  skin color:
-                  {' '}
-                  {skinColor}
-                  <br />
-                </>
-                )}
+                {Helpers.isPropertyValid(skinColor)
+                  && `skin color: ${skinColor}`}
               </div>
 
               <div className={styles.properties}>
-                <div className={styles.property}>
-                  <Property amount={height} type="height" />
-                </div>
+                {Helpers.isPropertyValid(height) && (
+                  <div className={styles.property}>
+                    <Property amount={height} type="height" />
+                  </div>
+                )}
 
-                <div className={styles.property}>
-                  <Property amount={mass} type="mass" />
-                </div>
+                {Helpers.isPropertyValid(mass) && (
+                  <div className={styles.property}>
+                    <Property amount={mass} type="mass" />
+                  </div>
+                )}
               </div>
             </div>
           </div>

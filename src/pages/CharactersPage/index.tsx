@@ -11,18 +11,21 @@ import { useGetCharactersQuery } from 'store/api/swApi';
 
 import Loader from 'components/Loader';
 import { useTypedSelector } from 'hooks/useTypedSelector';
+import Button from 'components/Button';
 import styles from './styles.module.scss';
 import { ICharacterEntity } from '../../interfaces/index';
 
 function CharactersPage() {
+  const [page, setPage] = useState(1);
+
   const ref = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [activeCharacter, setActiveCharacter] = useState <ICharacterEntity | null>(null);
 
   const eyeColor = useTypedSelector((state) => state.filter.eyeColor);
 
-  const { data, isLoading, isFetching } = useGetCharactersQuery();
-  const { count = '', results: characters = [] } = data || {};
+  const { data, isLoading, isFetching } = useGetCharactersQuery({ page });
+  const { count = 0, results: characters = [] } = data || {};
 
   const filteredCharacters = useMemo(() => {
     if (eyeColor === 'All') return characters;
@@ -40,6 +43,12 @@ function CharactersPage() {
   }, []);
 
   useOnClickOutside(ref, onClose);
+
+  const handleLoadMore = () => {
+    setPage((prev) => prev + 1);
+  };
+
+  const isAllLoaded = (characters || []).length >= count;
 
   return (
     <div className="container">
@@ -62,7 +71,7 @@ function CharactersPage() {
 
         <div className={styles.header}>
           <h1>
-            {count}
+            {!!count && count}
             {' '}
             Peoples for you to choose your favorite
           </h1>
@@ -72,7 +81,7 @@ function CharactersPage() {
           <Filter />
         </div>
 
-        {(isLoading || isFetching)
+        {(isLoading)
           ? <Loader />
           : (
             <div className={styles.charactersList}>
@@ -91,6 +100,14 @@ function CharactersPage() {
             </div>
           )}
 
+        <div className={styles.button}>
+          <Button
+            onClick={handleLoadMore}
+            text="Load more"
+            center
+            disabled={isLoading || isFetching || isAllLoaded}
+          />
+        </div>
       </div>
     </div>
   );

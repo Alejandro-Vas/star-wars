@@ -10,13 +10,21 @@ export const swApi = createApi({
   }),
 
   endpoints: (builder) => ({
-    getCharacters: builder.query<ICharactersResponse, void>({
-      query: () => ({
+    getCharacters: builder.query<ICharactersResponse, {page: number}>({
+      query: ({ page }) => ({
         url: '/people',
         params: {
           format: 'json',
+          page,
         },
       }),
+      serializeQueryArgs: ({ endpointName }) => endpointName,
+      merge: (currentCache, newItems) => {
+        currentCache.results?.push(...newItems.results || []);
+      },
+      forceRefetch({ currentArg, previousArg }) {
+        return currentArg !== previousArg;
+      },
     }),
   }),
 });

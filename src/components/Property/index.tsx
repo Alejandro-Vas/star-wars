@@ -1,3 +1,4 @@
+import Helpers from 'utils';
 import styles from './styles.module.scss';
 
 interface IProperty {
@@ -6,11 +7,16 @@ interface IProperty {
 }
 
 function Property({ amount, type }: IProperty) {
+  if (!Helpers.isPropertyValid(amount)) {
+    return null;
+  }
+
   return (
     <div className={styles.root}>
       <div className={styles.amount}>
         {amount}
       </div>
+
       <div className={styles.type}>
         {type}
       </div>
