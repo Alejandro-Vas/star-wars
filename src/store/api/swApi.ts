@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { ICharactersResponse } from 'interfaces/index';
+import transformResponse from './transformResponse';
 
 const API_URL = 'https://swapi.dev/api';
 
@@ -10,13 +11,14 @@ export const swApi = createApi({
   }),
 
   endpoints: (builder) => ({
-    getCharacters: builder.query<ICharactersResponse, {page: number}>({
-      query: ({ page }) => ({
+    getCharacters: builder.query<ICharactersResponse, {page: number, format: 'wookiee' | 'json'}>({
+      query: ({ page, format }) => ({
         url: '/people',
         params: {
-          format: 'json',
+          format,
           page,
         },
+        responseHandler: (response) => response.text().then((text) => JSON.parse(text.replace(/whhuanan/g, '"whhuanan"'))),
       }),
       serializeQueryArgs: ({ endpointName }) => endpointName,
       merge: (currentCache, newItems) => {
@@ -25,6 +27,7 @@ export const swApi = createApi({
       forceRefetch({ currentArg, previousArg }) {
         return currentArg?.page !== previousArg?.page;
       },
+      transformResponse,
     }),
   }),
 });
