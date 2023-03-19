@@ -15,7 +15,13 @@ import { useTypedSelector } from 'hooks/useTypedSelector';
 import { ICharacterEntity } from 'interfaces/index';
 import { useDispatch } from 'react-redux';
 import WookieeButton from 'assets/icons/wookieeButton.svg';
+import useActions from 'hooks/useActions';
 import styles from './styles.module.scss';
+
+const languagesMap = {
+  english: 'json',
+  wookiee: 'wookiee',
+} as const;
 
 function CharactersPage() {
   const [page, setPage] = useState(1);
@@ -23,16 +29,19 @@ function CharactersPage() {
   const ref = useRef(null);
   const [isOpen, setIsOpen] = useState(true);
   const [activeCharacter, setActiveCharacter] = useState <ICharacterEntity | null>(null);
-  const [isWookiee, setIsWookiee] = useState(false);
 
   const dispatch = useDispatch();
 
   const eyeColor = useTypedSelector((state) => state.filter.eyeColor);
 
+  const { language } = useTypedSelector((state) => state.translation);
+
   const {
     data, isLoading, isFetching,
-  } = useGetCharactersQuery({ page, format: isWookiee ? 'wookiee' : 'json' });
+  } = useGetCharactersQuery({ page, format: languagesMap[language] });
   const { count = 0, results: characters = [] } = data || {};
+
+  const { setLanguage } = useActions();
 
   const filteredCharacters = useMemo(() => {
     if (eyeColor === 'All') return characters;
@@ -56,8 +65,9 @@ function CharactersPage() {
   };
 
   const handleToggleWookiee = () => {
+    const newLanguage = language === 'english' ? 'wookiee' : 'english';
     setPage(1);
-    setIsWookiee((prev) => !prev);
+    setLanguage({ language: newLanguage });
     dispatch(swApi.util.resetApiState());
   };
 
@@ -79,7 +89,9 @@ function CharactersPage() {
 
       <div className={styles.root}>
         <div className={styles.language}>
-          language: en
+          language:
+          {' '}
+          {language}
         </div>
 
         <div className={styles.header}>
@@ -133,7 +145,6 @@ function CharactersPage() {
           <WookieeButton />
         </button>
       </div>
-
     </div>
   );
 }
