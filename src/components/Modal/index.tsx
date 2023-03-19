@@ -8,7 +8,7 @@ import hermaphrodite from 'assets/illustrations/hermaphrodite.png';
 import male from 'assets/illustrations/male.png';
 import female from 'assets/illustrations/female.png';
 import CloseIcon from 'assets/icons/close.svg';
-import { genders } from 'constants/index';
+import { genders, gendersWookiee } from 'constants/index';
 import styles from './styles.module.scss';
 
 interface IModal {
@@ -20,6 +20,9 @@ const imgMap = {
   [genders.male]: male,
   [genders.female]: female,
   [genders.hermaphrodite]: hermaphrodite,
+  [gendersWookiee.male]: male,
+  [gendersWookiee.female]: female,
+  [gendersWookiee.hermaphrodite]: hermaphrodite,
 };
 
 const Modal = forwardRef<HTMLDivElement | null, IModal>(

@@ -7,3 +7,9 @@ export const genders = {
   female: 'female',
   hermaphrodite: 'hermaphrodite',
 };
+
+export const gendersWookiee = {
+  male: 'scraanwo',
+  female: 'wwwoscraanwo',
+  hermaphrodite: 'acworcscraakacrcoowaahaowo',
+};
