@@ -16,6 +16,7 @@ import { ICharacterEntity } from 'interfaces/index';
 import { useDispatch } from 'react-redux';
 import WookieeButton from 'assets/icons/wookieeButton.svg';
 import useActions from 'hooks/useActions';
+import useTranslation from 'hooks/useTranslation';
 import styles from './styles.module.scss';
 
 const languagesMap = {
@@ -34,11 +35,11 @@ function CharactersPage() {
 
   const eyeColor = useTypedSelector((state) => state.filter.eyeColor);
 
-  const { language } = useTypedSelector((state) => state.translation);
+  const { language: currentLanguage } = useTypedSelector((state) => state.translation);
 
   const {
     data, isLoading, isFetching,
-  } = useGetCharactersQuery({ page, format: languagesMap[language] });
+  } = useGetCharactersQuery({ page, format: languagesMap[currentLanguage] });
   const { count = 0, results: characters = [] } = data || {};
 
   const { setLanguage } = useActions();
@@ -65,13 +66,15 @@ function CharactersPage() {
   };
 
   const handleToggleWookiee = () => {
-    const newLanguage = language === 'english' ? 'wookiee' : 'english';
+    const newLanguage = currentLanguage === 'english' ? 'wookiee' : 'english';
     setPage(1);
     setLanguage({ language: newLanguage });
     dispatch(swApi.util.resetApiState());
   };
 
   const isAllLoaded = (characters || []).length >= count;
+
+  const [header, language] = useTranslation(['header', 'language']);
 
   return (
     <div className="container">
@@ -89,16 +92,17 @@ function CharactersPage() {
 
       <div className={styles.root}>
         <div className={styles.language}>
-          language:
-          {' '}
           {language}
+          :
+          {' '}
+          {currentLanguage}
         </div>
 
         <div className={styles.header}>
           <h1>
             {!!count && count}
             {' '}
-            Peoples for you to choose your favorite
+            {header}
           </h1>
         </div>
 
