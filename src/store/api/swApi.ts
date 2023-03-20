@@ -4,7 +4,7 @@ import transformResponse from './transformResponse';
 
 const API_URL = 'https://swapi.dev/api';
 
-type Payload = {
+interface IPayloadParams {
   page: number,
   format: 'wookiee' | 'json'
 }
@@ -16,7 +16,7 @@ export const swApi = createApi({
   }),
 
   endpoints: (builder) => ({
-    getCharacters: builder.query<ICharactersResponse, Payload>({
+    getCharacters: builder.query<ICharactersResponse, IPayloadParams>({
       query: ({ page, format }) => ({
         url: '/people',
         params: {

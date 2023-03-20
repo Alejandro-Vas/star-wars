@@ -4,10 +4,9 @@ import Helpers from 'utils/index';
 import styles from './styles.module.scss';
 
 interface IBadge {
-    text: string;
+  text: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function Badge({ text }: IBadge) {
   if (!Helpers.isPropertyValid(text)) {
     return null;

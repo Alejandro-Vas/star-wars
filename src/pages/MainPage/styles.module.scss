@@ -6,7 +6,6 @@
     display: flex;
     background: linear-gradient(180deg, $backgroundLight 0%, $backgroundDark 100%);
     color: white;
-    // TODO to variables
     height: calc(100vh - $headerHeight);
 
     @media (width <= 1024px) {

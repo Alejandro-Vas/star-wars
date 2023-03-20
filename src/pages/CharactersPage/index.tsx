@@ -26,13 +26,13 @@ const languagesMap = {
 } as const;
 
 function CharactersPage() {
-  const [page, setPage] = useState(1);
-
+  const dispatch = useDispatch();
+  const { setLanguage, setActiveFilter } = useActions();
   const ref = useRef(null);
+
+  const [page, setPage] = useState(1);
   const [isOpen, setIsOpen] = useState(true);
   const [activeCharacter, setActiveCharacter] = useState <ICharacterEntity | null>(null);
-
-  const dispatch = useDispatch();
 
   const eyeColor = useTypedSelector((state) => state.filter.eyeColor);
 
@@ -42,8 +42,6 @@ function CharactersPage() {
     data, isLoading, isFetching,
   } = useGetCharactersQuery({ page, format: languagesMap[currentLanguage] });
   const { count = 0, results: characters = [] } = data || {};
-
-  const { setLanguage, setActiveFilter } = useActions();
 
   const filteredCharacters = useMemo(() => {
     if (eyeColor === filters.english.eyeColors[0]
@@ -87,12 +85,7 @@ function CharactersPage() {
     languageText,
     allPeopleLoadedText,
     LoadMoreText,
-  ] = useTranslation([
-    'header',
-    'language',
-    'allPeopleLoaded',
-    'loadMore',
-  ]);
+  ] = useTranslation(['header', 'language', 'allPeopleLoaded', 'loadMore']);
 
   return (
     <div className="container">
