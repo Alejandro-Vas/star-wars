@@ -17,6 +17,7 @@ import { useDispatch } from 'react-redux';
 import WookieeButton from 'assets/icons/wookieeButton.svg';
 import useActions from 'hooks/useActions';
 import useTranslation from 'hooks/useTranslation';
+import { filters } from 'constants/index';
 import styles from './styles.module.scss';
 
 const languagesMap = {
@@ -42,13 +43,21 @@ function CharactersPage() {
   } = useGetCharactersQuery({ page, format: languagesMap[currentLanguage] });
   const { count = 0, results: characters = [] } = data || {};
 
-  const { setLanguage } = useActions();
+  const { setLanguage, setActiveFilter } = useActions();
 
   const filteredCharacters = useMemo(() => {
     if (eyeColor === 'All') return characters;
 
     return characters?.filter((character) => character.eye_color === eyeColor.toLocaleLowerCase());
   }, [characters, eyeColor]);
+
+  const chars = characters?.map((char) => char.eye_color);
+
+  const list = chars
+    ?.filter((x, i, a) => a.indexOf(x) === i)
+    .map((char) => char.charAt(0).toUpperCase() + char.slice(1));
+
+  console.log(list);
 
   const onClose = useCallback(() => {
     setIsOpen(false);
@@ -66,9 +75,13 @@ function CharactersPage() {
   };
 
   const handleToggleWookiee = () => {
-    const newLanguage = currentLanguage === 'english' ? 'wookiee' : 'english';
     setPage(1);
+
+    const newLanguage = currentLanguage === 'english' ? 'wookiee' : 'english';
     setLanguage({ language: newLanguage });
+
+    setActiveFilter({ type: 'eyeColor', value: filters[newLanguage].eyeColors[0] });
+
     dispatch(swApi.util.resetApiState());
   };
 

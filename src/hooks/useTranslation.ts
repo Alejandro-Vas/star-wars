@@ -11,7 +11,7 @@ const translations = {
     eyeColor: 'Aochuana uanao',
     language: 'rrrawhra',
   },
-};
+} as const;
 
 type ITranslation = keyof typeof translations.english | keyof typeof translations.wookiee
 

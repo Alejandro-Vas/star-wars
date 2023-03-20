@@ -1,5 +1,12 @@
 export const filters = {
-  eyeColors: ['All', 'Brown', 'Red', 'Blue', 'White'],
+  english: {
+    eyeColors:
+    ['All', 'Blue', 'Yellow', 'Red', 'Brown', 'Blue-gray', 'Black', 'Orange', 'Hazel'],
+  },
+  wookiee: {
+    eyeColors:
+    ['All', 'Rhanhuwo', 'Rowoananoooh', 'Rcwowa', 'Rhrcooohwh', 'Rhanhuwo-rrrcraro', 'Rhanraoaor', 'Oorcrawhrrwo', 'Acraufwoan', 'Akahwhor', 'Rcwowa, rhanhuwo', 'Rrooanwa', 'Rrrcwowowh, rowoananoooh', 'Ohacahaowo'],
+  },
 };
 
 export const genders = {
