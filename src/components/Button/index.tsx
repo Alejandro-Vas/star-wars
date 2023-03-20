@@ -23,7 +23,11 @@ function Button({
   if (to) {
     return (
       <Link to={to} className={center ? styles.center : ''}>
-        <button type="button" className={className} disabled={disabled}>
+        <button
+          type="button"
+          className={className}
+          disabled={disabled}
+        >
           {text}
         </button>
       </Link>
@@ -32,7 +36,12 @@ function Button({
 
   return (
     <div className={center ? styles.center : ''}>
-      <button type="button" className={className} onClick={onClick} disabled={disabled}>
+      <button
+        type="button"
+        className={className}
+        onClick={onClick}
+        disabled={disabled}
+      >
         {text}
       </button>
     </div>

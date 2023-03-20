@@ -68,7 +68,7 @@ const Modal = forwardRef<HTMLDivElement | null, IModal>(
 
           <div className={styles.content} ref={ref}>
             <div className={styles.leftBlock}>
-              <div>
+              <div className={styles.imageContainer}>
                 <img src={image} alt="gender" />
               </div>
 

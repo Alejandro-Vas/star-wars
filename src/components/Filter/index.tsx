@@ -6,33 +6,32 @@ import useTranslation from 'hooks/useTranslation';
 import styles from './styles.module.scss';
 
 function Filter() {
+  const { setActiveFilter } = useActions();
   const { language } = useTypedSelector((state) => state.translation);
   const { eyeColor: selectedOption } = useTypedSelector((state) => state.filter);
-
-  const [eyeColor] = useTranslation(['eyeColor']);
 
   const options = filters[language]?.eyeColors;
 
   const [isOpen, setIsOpen] = useState(false);
-
-  const onToggle = () => setIsOpen((open) => !open);
-
-  const { setActiveFilter } = useActions();
-
-  const onSelect = (value:string) => () => {
-    setActiveFilter({ type: 'eyeColor', value });
-    setIsOpen(false);
-  };
 
   const filteredOptions = useMemo(
     () => options.filter((option) => option !== selectedOption),
     [options, selectedOption],
   );
 
+  const onToggle = () => setIsOpen((open) => !open);
+
+  const onSelect = (value:string) => () => {
+    setActiveFilter({ type: 'eyeColor', value });
+    setIsOpen(false);
+  };
+
+  const [eyeColorText] = useTranslation(['eyeColor']);
+
   return (
     <div className={styles.root}>
       <div>
-        {eyeColor}
+        {eyeColorText}
       </div>
       <div className={styles.dropDownContainer}>
         <div

@@ -4,6 +4,11 @@ import transformResponse from './transformResponse';
 
 const API_URL = 'https://swapi.dev/api';
 
+interface IPayloadParams {
+  page: number,
+  format: 'wookiee' | 'json'
+}
+
 export const swApi = createApi({
   reducerPath: 'api/swApi',
   baseQuery: fetchBaseQuery({
@@ -11,14 +16,16 @@ export const swApi = createApi({
   }),
 
   endpoints: (builder) => ({
-    getCharacters: builder.query<ICharactersResponse, {page: number, format: 'wookiee' | 'json'}>({
+    getCharacters: builder.query<ICharactersResponse, IPayloadParams>({
       query: ({ page, format }) => ({
         url: '/people',
         params: {
           format,
           page,
         },
-        responseHandler: (response) => response.text().then((text) => JSON.parse(text.replace(/whhuanan/g, '"whhuanan"'))),
+        responseHandler: (response) => response
+          .text()
+          .then((text) => JSON.parse(text.replace(/whhuanan/g, '"whhuanan"'))),
       }),
       serializeQueryArgs: ({ endpointName }) => endpointName,
       merge: (currentCache, newItems) => {

@@ -8,11 +8,16 @@ const initialState = {
   eyeColor: 'All',
 } as IFilters;
 
+interface IFilterPayload {
+  type:string,
+  value:string
+}
+
 const filterSlice = createSlice({
   name: 'filters',
   initialState,
   reducers: {
-    setActiveFilter(state, action: PayloadAction<{type:string, value:string}>) {
+    setActiveFilter(state, action: PayloadAction<IFilterPayload>) {
       return {
         ...state,
         [action.payload.type]: action.payload.value,
