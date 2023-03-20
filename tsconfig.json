@@ -15,5 +15,5 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
   },
-  "include": ["src", "webpack", "dev-server", "index.d.ts"]
+  "include": ["src", "webpack", "dev-server", "index.d.ts", "babel.config.ts", "babel.config.ts"]
 }
