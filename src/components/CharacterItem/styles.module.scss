@@ -11,7 +11,7 @@
   filter: drop-shadow(4px 4px 4px rgba(33, 33, 33, 0.1));
   cursor: pointer;
 
-  @media (width <= 760px) {
+  @media (max-width:760px) {
     width: 100%;
 }  
 

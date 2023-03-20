@@ -18,7 +18,7 @@ function Header() {
     <div className={styles.root}>
       <div className={styles.logo}>
         <NavLink to="/">
-          <Logo />
+          <Logo className={styles.svg} />
         </NavLink>
       </div>
 
