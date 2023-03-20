@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+
 import React from 'react';
 import { Provider } from 'react-redux';
 import { store } from 'store/store';
@@ -19,8 +20,15 @@ describe('CharacterItem', () => {
     expect(characterItem).toMatchSnapshot();
   });
 
-  test('CharacterItem snapshot', () => {
-    expect(characterItem).toMatchSnapshot();
+  test('CharacterItem title', () => {
+    render(
+      <Provider store={store}>
+        <CharacterItem character={lukeSkywalkerMock} />
+      </Provider>,
+    );
+
+    const element = screen.getByText('Luke Skywalker');
+    expect(element).toBeInTheDocument();
   });
 });
 
