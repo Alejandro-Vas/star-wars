@@ -24,7 +24,7 @@ export interface ICharactersResponse {
     results?: (ICharacterEntity)[] | null;
 }
 
-export interface ICharacterWookieEntityEntity {
+export interface ICharacterWookieeEntity {
     whrascwo: string;
     acwoahrracao: string;
     scracc: string;
@@ -43,9 +43,9 @@ export interface ICharacterWookieEntityEntity {
     hurcan: string;
 }
 
-export interface ICharachtersWookieResponse {
+export interface ICharachtersWookieeResponse {
     oaoohuwhao: number;
     whwokao: string;
     akrcwohoahoohuc: string | null;
-    rcwochuanaoc?: (ICharacterWookieEntityEntity)[] | null;
+    rcwochuanaoc?: (ICharacterWookieeEntity)[] | null;
 }

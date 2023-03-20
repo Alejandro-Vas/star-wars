@@ -15,6 +15,8 @@
   margin: 15% auto;
   padding: 20px;
   max-width: 800px;
+  padding-top: 36px;
+  position: relative;
 }
 
 .buttonWrapper {
@@ -26,6 +28,9 @@
 .close {
   background-color: transparent;
   border: none;
+  position: absolute;
+  right: 20px;
+  top: 0;
 }
 
 .close:hover,
@@ -39,7 +44,7 @@
   background-color: white;
   display: flex;
   border-radius: 16px;
-  min-height: 360px;
+  max-height: 360px;
 }
 
 .leftBlock {
@@ -51,13 +56,25 @@
   width: 341px;
   background-color: $backgroundLight;
   border-radius: 16px 0 0 16px;
+
+  @media (width <= 600px) {
+    display: none;
+  }
 }
 
 .rightBlock {
   padding-left:13px;
-  min-width: 435px;
+  min-width: 200px;
+  width:60%;
   background: linear-gradient(180deg, $backgroundDark 42.19%, $backgroundLight 100%);
   border-radius: 0px 16px 16px 0;
+  padding: 10px;
+
+  @media (width <= 600px) {
+    width: 100%;
+    border-radius: 16px;
+    padding: 30px;
+  }
 }
 
 .title {
@@ -95,5 +112,12 @@
   background-color: white;
   width: fit-content;
   border-radius: 8px;
+}
+
+.imageContainer img {
+  text-align: center;
+  max-width:100%;
+  height:auto;
+
 }
 

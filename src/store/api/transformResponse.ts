@@ -1,8 +1,8 @@
 import { FetchBaseQueryMeta } from '@reduxjs/toolkit/dist/query';
-import { ICharachtersWookieResponse, ICharactersResponse } from 'interfaces/index';
+import { ICharachtersWookieeResponse, ICharactersResponse } from 'interfaces/index';
 
 const transformResponse = (
-  response:ICharactersResponse & ICharachtersWookieResponse,
+  response:ICharactersResponse & ICharachtersWookieeResponse,
   _meta: FetchBaseQueryMeta | undefined,
   { format }: {format: 'wookiee' | 'json'},
 ):ICharactersResponse => (format === 'wookiee'
