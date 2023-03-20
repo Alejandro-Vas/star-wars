@@ -1,3 +1,5 @@
+import translations from './translations';
+
 export const filters = {
   english: {
     eyeColors:
@@ -5,7 +7,7 @@ export const filters = {
   },
   wookiee: {
     eyeColors:
-    ['All', 'Rhanhuwo', 'Rowoananoooh', 'Rcwowa', 'Rhrcooohwh', 'Rhanhuwo-rrrcraro', 'Rhanraoaor', 'Oorcrawhrrwo', 'Acraufwoan', 'Akahwhor', 'Rcwowa, rhanhuwo', 'Rrooanwa', 'Rrrcwowowh, rowoananoooh', 'Ohacahaowo'],
+    ['Aaakacr', 'Rhanhuwo', 'Rowoananoooh', 'Rcwowa', 'Rhrcooohwh', 'Rhanhuwo-rrrcraro', 'Rhanraoaor', 'Oorcrawhrrwo', 'Acraufwoan', 'Akahwhor', 'Rcwowa, rhanhuwo', 'Rrooanwa', 'Rrrcwowowh, rowoananoooh', 'Ohacahaowo'],
   },
 };
 
@@ -20,3 +22,5 @@ export const gendersWookiee = {
   female: 'wwwoscraanwo',
   hermaphrodite: 'acworcscraakacrcoowaahaowo',
 };
+
+export { translations };

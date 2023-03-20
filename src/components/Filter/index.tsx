@@ -2,11 +2,14 @@ import { useMemo, useState } from 'react';
 import { filters } from 'constants/index';
 import useActions from 'hooks/useActions';
 import { useTypedSelector } from 'hooks/useTypedSelector';
+import useTranslation from 'hooks/useTranslation';
 import styles from './styles.module.scss';
 
 function Filter() {
   const { language } = useTypedSelector((state) => state.translation);
   const { eyeColor: selectedOption } = useTypedSelector((state) => state.filter);
+
+  const [eyeColor] = useTranslation(['eyeColor']);
 
   const options = filters[language]?.eyeColors;
 
@@ -29,7 +32,7 @@ function Filter() {
   return (
     <div className={styles.root}>
       <div>
-        color eye
+        {eyeColor}
       </div>
       <div className={styles.dropDownContainer}>
         <div

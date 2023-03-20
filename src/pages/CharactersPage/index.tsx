@@ -46,18 +46,13 @@ function CharactersPage() {
   const { setLanguage, setActiveFilter } = useActions();
 
   const filteredCharacters = useMemo(() => {
-    if (eyeColor === 'All') return characters;
+    if (eyeColor === filters.english.eyeColors[0]
+      || eyeColor === filters.wookiee.eyeColors[0]) {
+      return characters;
+    }
 
     return characters?.filter((character) => character.eye_color === eyeColor.toLocaleLowerCase());
   }, [characters, eyeColor]);
-
-  const chars = characters?.map((char) => char.eye_color);
-
-  const list = chars
-    ?.filter((x, i, a) => a.indexOf(x) === i)
-    .map((char) => char.charAt(0).toUpperCase() + char.slice(1));
-
-  console.log(list);
 
   const onClose = useCallback(() => {
     setIsOpen(false);
@@ -87,7 +82,17 @@ function CharactersPage() {
 
   const isAllLoaded = (characters || []).length >= count;
 
-  const [header, language] = useTranslation(['header', 'language']);
+  const [
+    headerText,
+    languageText,
+    allPeopleLoadedText,
+    LoadMoreText,
+  ] = useTranslation([
+    'header',
+    'language',
+    'allPeopleLoaded',
+    'loadMore',
+  ]);
 
   return (
     <div className="container">
@@ -105,7 +110,7 @@ function CharactersPage() {
 
       <div className={styles.root}>
         <div className={styles.language}>
-          {language}
+          {languageText}
           :
           {' '}
           {currentLanguage}
@@ -115,7 +120,7 @@ function CharactersPage() {
           <h1>
             {!!count && count}
             {' '}
-            {header}
+            {headerText}
           </h1>
         </div>
 
@@ -148,7 +153,7 @@ function CharactersPage() {
             <div className={styles.loadMoreButton}>
               <Button
                 onClick={handleLoadMore}
-                text={isAllLoaded ? 'All people loaded' : 'Load more'}
+                text={isAllLoaded ? allPeopleLoadedText : LoadMoreText}
                 center
                 disabled={isLoading || isFetching || isAllLoaded}
               />

@@ -1,17 +1,5 @@
+import { translations } from 'constants/index';
 import { useTypedSelector } from 'hooks/useTypedSelector';
-
-const translations = {
-  english: {
-    header: 'Peoples for you to choose your favorite',
-    eyeColor: 'color eye',
-    language: 'language',
-  },
-  wookiee: {
-    header: 'Rcwochuanaoc ochuan uanaoc',
-    eyeColor: 'Aochuana uanao',
-    language: 'rrrawhra',
-  },
-} as const;
 
 type ITranslation = keyof typeof translations.english | keyof typeof translations.wookiee
 
