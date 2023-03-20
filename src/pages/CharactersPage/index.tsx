@@ -58,12 +58,12 @@ function CharactersPage() {
     setIsOpen(false);
   }, []);
 
+  useOnClickOutside(ref, onClose);
+
   const onOpen = useCallback((character: ICharacterEntity) => {
     setIsOpen(true);
     setActiveCharacter(character);
   }, []);
-
-  useOnClickOutside(ref, onClose);
 
   const handleLoadMore = () => {
     setPage((prev) => prev + 1);
