@@ -19,7 +19,7 @@ function MainPage() {
             favorite
             <br />
             {' '}
-            <strong>character</strong>
+            <strong>characters</strong>
           </h1>
 
           <div className={styles.description}>

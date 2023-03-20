@@ -1,5 +1,3 @@
-import { filters } from 'constants/index';
-
 export interface ICharacterEntity {
     name: string;
     height: string;
@@ -22,6 +20,32 @@ export interface ICharacterEntity {
 export interface ICharactersResponse {
     count: number;
     next: string;
-    previous?: null;
+    previous?: string | null;
     results?: (ICharacterEntity)[] | null;
+}
+
+export interface ICharacterWookieEntityEntity {
+    whrascwo: string;
+    acwoahrracao: string;
+    scracc: string;
+    acraahrc_oaooanoorc: string;
+    corahwh_oaooanoorc: string;
+    worowo_oaooanoorc: string;
+    rhahrcaoac_roworarc: string;
+    rrwowhwaworc: string;
+    acooscwoohoorcanwa: string;
+    wwahanscc?: (string)[] | null;
+    cakwooaahwoc?: (string | null)[] | null;
+    howoacahoaanwoc?: (string | null)[] | null;
+    caorarccacahakc?: (string | null)[] | null;
+    oarcworaaowowa: string;
+    wowaahaowowa: string;
+    hurcan: string;
+}
+
+export interface ICharachtersWookieResponse {
+    oaoohuwhao: number;
+    whwokao: string;
+    akrcwohoahoohuc: string | null;
+    rcwochuanaoc?: (ICharacterWookieEntityEntity)[] | null;
 }

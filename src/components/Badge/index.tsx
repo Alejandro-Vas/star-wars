@@ -1,4 +1,4 @@
-import { genders } from 'constants/index';
+import { genders, gendersWookiee } from 'constants/index';
 import { memo } from 'react';
 import Helpers from 'utils/index';
 import styles from './styles.module.scss';
@@ -16,10 +16,13 @@ function Badge({ text }: IBadge) {
   const getClassNameByColor = () => {
     switch (text) {
       case genders.female:
+      case gendersWookiee.female:
         return styles.female;
       case genders.male:
+      case gendersWookiee.male:
         return styles.male;
       case genders.hermaphrodite:
+      case gendersWookiee.hermaphrodite:
         return styles.hermaphrodite;
       default:
         return '';

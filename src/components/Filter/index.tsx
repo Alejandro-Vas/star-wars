@@ -1,36 +1,38 @@
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState } from 'react';
 import { filters } from 'constants/index';
 import useActions from 'hooks/useActions';
+import { useTypedSelector } from 'hooks/useTypedSelector';
+import useTranslation from 'hooks/useTranslation';
 import styles from './styles.module.scss';
 
-const { eyeColors: options } = filters;
-
 function Filter() {
+  const { language } = useTypedSelector((state) => state.translation);
+  const { eyeColor: selectedOption } = useTypedSelector((state) => state.filter);
+
+  const [eyeColor] = useTranslation(['eyeColor']);
+
+  const options = filters[language]?.eyeColors;
+
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string>(options[0]);
 
   const onToggle = () => setIsOpen((open) => !open);
 
+  const { setActiveFilter } = useActions();
+
   const onSelect = (value:string) => () => {
-    setSelectedOption(value);
+    setActiveFilter({ type: 'eyeColor', value });
     setIsOpen(false);
   };
 
   const filteredOptions = useMemo(
     () => options.filter((option) => option !== selectedOption),
-    [selectedOption],
+    [options, selectedOption],
   );
-
-  const { setActiveFilter } = useActions();
-
-  useEffect(() => {
-    setActiveFilter({ type: 'eyeColor', value: selectedOption });
-  });
 
   return (
     <div className={styles.root}>
       <div>
-        color eye
+        {eyeColor}
       </div>
       <div className={styles.dropDownContainer}>
         <div

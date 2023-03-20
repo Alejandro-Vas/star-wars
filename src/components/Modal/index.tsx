@@ -8,7 +8,8 @@ import hermaphrodite from 'assets/illustrations/hermaphrodite.png';
 import male from 'assets/illustrations/male.png';
 import female from 'assets/illustrations/female.png';
 import CloseIcon from 'assets/icons/close.svg';
-import { genders } from 'constants/index';
+import { genders, gendersWookiee } from 'constants/index';
+import useTranslation from 'hooks/useTranslation';
 import styles from './styles.module.scss';
 
 interface IModal {
@@ -20,6 +21,9 @@ const imgMap = {
   [genders.male]: male,
   [genders.female]: female,
   [genders.hermaphrodite]: hermaphrodite,
+  [gendersWookiee.male]: male,
+  [gendersWookiee.female]: female,
+  [gendersWookiee.hermaphrodite]: hermaphrodite,
 };
 
 const Modal = forwardRef<HTMLDivElement | null, IModal>(
@@ -34,11 +38,18 @@ const Modal = forwardRef<HTMLDivElement | null, IModal>(
       skin_color: skinColor = '',
     } = character || {};
 
+    const [
+      heightText,
+      massText,
+      hairColorText,
+      skinColorText,
+    ] = useTranslation(['height', 'mass', 'hairColor', 'skinColor']);
+
+    const image = imgMap[gender] || hermaphrodite;
+
     if (!character) {
       return null;
     }
-
-    const image = imgMap[gender] || hermaphrodite;
 
     return (
       <div className={styles.modal}>
@@ -76,25 +87,25 @@ const Modal = forwardRef<HTMLDivElement | null, IModal>(
               <div className={styles.description}>
                 {Helpers.isPropertyValid(hairColor) && (
                 <>
-                  {`hair color: ${hairColor}`}
+                  {`${hairColorText}: ${hairColor}`}
                   <br />
                 </>
                 )}
 
                 {Helpers.isPropertyValid(skinColor)
-                  && `skin color: ${skinColor}`}
+                  && `${skinColorText}: ${skinColor}`}
               </div>
 
               <div className={styles.properties}>
                 {Helpers.isPropertyValid(height) && (
                   <div className={styles.property}>
-                    <Property amount={height} type="height" />
+                    <Property amount={height} type={heightText} />
                   </div>
                 )}
 
                 {Helpers.isPropertyValid(mass) && (
                   <div className={styles.property}>
-                    <Property amount={mass} type="mass" />
+                    <Property amount={mass} type={massText} />
                   </div>
                 )}
               </div>

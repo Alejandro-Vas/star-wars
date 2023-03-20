@@ -1,5 +1,8 @@
 @import "styles/variables.scss";
 
+$filtersWidth: 200px;
+
+
 .root {
     display: flex;
     align-items: center;
@@ -13,13 +16,18 @@
 
 .dropDownHeader {
     cursor:pointer;
-    width: 150px;
+    width: $filtersWidth;
     padding: 3px;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
     text-align: center;
     background: $paper;
     box-shadow: 2px 2px 2px rgba(33, 33, 33, 0.1);
     border-radius: 4px;
+
+    &:hover {
+        opacity: 0.7;
+        transition: all ease 0.2s;
+    }
 }
 
 .dropDownListContainer {
@@ -29,7 +37,7 @@
 .dropDownList {
     top: 40px;
     position: absolute;
-    width: 150px;
+    width: $filtersWidth;
     z-index: 1;
     background: $paper;    
     box-shadow: 4px 4px 8px rgba(1, 28, 64, 0.2);

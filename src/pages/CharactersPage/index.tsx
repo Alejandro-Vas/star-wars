@@ -10,25 +10,46 @@ import Loader from 'components/Loader';
 import Button from 'components/Button';
 
 import useOnClickOutside from 'hooks/useOnClickOutside';
-import { useGetCharactersQuery } from 'store/api/swApi';
+import { swApi, useGetCharactersQuery } from 'store/api/swApi';
 import { useTypedSelector } from 'hooks/useTypedSelector';
 import { ICharacterEntity } from 'interfaces/index';
+import { useDispatch } from 'react-redux';
+import WookieeButton from 'assets/icons/wookieeButton.svg';
+import useActions from 'hooks/useActions';
+import useTranslation from 'hooks/useTranslation';
+import { filters } from 'constants/index';
 import styles from './styles.module.scss';
+
+const languagesMap = {
+  english: 'json',
+  wookiee: 'wookiee',
+} as const;
 
 function CharactersPage() {
   const [page, setPage] = useState(1);
 
   const ref = useRef(null);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [activeCharacter, setActiveCharacter] = useState <ICharacterEntity | null>(null);
+
+  const dispatch = useDispatch();
 
   const eyeColor = useTypedSelector((state) => state.filter.eyeColor);
 
-  const { data, isLoading, isFetching } = useGetCharactersQuery({ page });
+  const { language: currentLanguage } = useTypedSelector((state) => state.translation);
+
+  const {
+    data, isLoading, isFetching,
+  } = useGetCharactersQuery({ page, format: languagesMap[currentLanguage] });
   const { count = 0, results: characters = [] } = data || {};
 
+  const { setLanguage, setActiveFilter } = useActions();
+
   const filteredCharacters = useMemo(() => {
-    if (eyeColor === 'All') return characters;
+    if (eyeColor === filters.english.eyeColors[0]
+      || eyeColor === filters.wookiee.eyeColors[0]) {
+      return characters;
+    }
 
     return characters?.filter((character) => character.eye_color === eyeColor.toLocaleLowerCase());
   }, [characters, eyeColor]);
@@ -48,7 +69,30 @@ function CharactersPage() {
     setPage((prev) => prev + 1);
   };
 
+  const handleToggleWookiee = () => {
+    setPage(1);
+
+    const newLanguage = currentLanguage === 'english' ? 'wookiee' : 'english';
+    setLanguage({ language: newLanguage });
+
+    setActiveFilter({ type: 'eyeColor', value: filters[newLanguage].eyeColors[0] });
+
+    dispatch(swApi.util.resetApiState());
+  };
+
   const isAllLoaded = (characters || []).length >= count;
+
+  const [
+    headerText,
+    languageText,
+    allPeopleLoadedText,
+    LoadMoreText,
+  ] = useTranslation([
+    'header',
+    'language',
+    'allPeopleLoaded',
+    'loadMore',
+  ]);
 
   return (
     <div className="container">
@@ -66,14 +110,17 @@ function CharactersPage() {
 
       <div className={styles.root}>
         <div className={styles.language}>
-          language: en
+          {languageText}
+          :
+          {' '}
+          {currentLanguage}
         </div>
 
         <div className={styles.header}>
           <h1>
             {!!count && count}
             {' '}
-            Peoples for you to choose your favorite
+            {headerText}
           </h1>
         </div>
 
@@ -103,15 +150,22 @@ function CharactersPage() {
         {isLoading || isFetching
           ? <Loader />
           : (
-            <div className={styles.button}>
+            <div className={styles.loadMoreButton}>
               <Button
                 onClick={handleLoadMore}
-                text="Load more"
+                text={isAllLoaded ? allPeopleLoadedText : LoadMoreText}
                 center
                 disabled={isLoading || isFetching || isAllLoaded}
               />
             </div>
           )}
+        <button
+          type="button"
+          onClick={handleToggleWookiee}
+          className={styles.wookieeButton}
+        >
+          <WookieeButton />
+        </button>
       </div>
     </div>
   );

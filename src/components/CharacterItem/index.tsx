@@ -3,6 +3,7 @@ import Property from 'components/Property';
 
 import { memo } from 'react';
 import { ICharacterEntity } from 'interfaces/index';
+import useTranslation from 'hooks/useTranslation';
 import styles from './styles.module.scss';
 
 interface ICharacterItem {
@@ -18,6 +19,11 @@ function CharacterItem({ character }:ICharacterItem) {
     gender,
   } = character;
 
+  const [
+    heightText,
+    massText,
+  ] = useTranslation(['height', 'mass']);
+
   return (
     <div className={styles.root}>
       <div className={styles.title}>
@@ -25,9 +31,9 @@ function CharacterItem({ character }:ICharacterItem) {
       </div>
 
       <div className={styles.wrapper}>
-        <Property amount={height} type="height" />
+        <Property amount={height} type={heightText} />
 
-        <Property amount={mass} type="mass" />
+        <Property amount={mass} type={massText} />
       </div>
 
       <div className={styles.wrapper}>

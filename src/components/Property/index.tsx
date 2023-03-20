@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 
 interface IProperty {
     amount: string;
-    type: 'height' | 'mass'
+    type: string;
 }
 
 function Property({ amount, type }: IProperty) {
