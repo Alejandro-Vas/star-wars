@@ -1,7 +1,7 @@
 @import "styles/variables.scss";
 
 .root {
-    height: 93px;
+    height: $headerHeight;
     background: $backgroundLight;
     display: flex;
     justify-content: space-between;
