@@ -44,7 +44,6 @@
   background-color: white;
   display: flex;
   border-radius: 16px;
-  max-height: 360px;
 }
 
 .leftBlock {
@@ -82,7 +81,13 @@
   font-weight: 700;
   font-size: 36px;
   line-height: 42px;
-  color: white
+  color: white;
+  
+
+  @media (width <= 900px) {
+    font-size: 24px;
+    line-height: 36px;
+  }
 }
 
 .description {
@@ -92,6 +97,10 @@
   box-shadow: 4px 4px 4px rgba(33, 33, 33, 0.1);
   border-radius: 8px;
   margin-bottom: 76px;
+
+  @media (width <= 900px) {
+    margin-bottom: 48px;
+  }
 }
 
 .badges {
@@ -118,6 +127,5 @@
   text-align: center;
   max-width:100%;
   height:auto;
-
 }
 
