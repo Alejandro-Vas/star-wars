@@ -156,6 +156,7 @@ function CharactersPage() {
           type="button"
           onClick={handleToggleWookiee}
           className={styles.wookieeButton}
+          disabled={isLoading || isFetching}
         >
           <WookieeButton />
         </button>

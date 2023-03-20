@@ -17,12 +17,12 @@
     align-items: center;
     padding-right: 160px;
 
-    @media (width <= 900px) {
+    @media (max-width:900px) {
         padding-right: 40px;
         gap: 50px;
     }  
 
-    @media (width <= 600px) {
+    @media (max-width:600px) {
         padding-right: 10px;
         gap: 0
     }  
@@ -37,7 +37,7 @@ a {
     line-height: 29px;
     position: relative;
 
-    @media (width <= 600px) {
+    @media (max-width:600px) {
         padding: 0 0 15px 0;
         font-size: 18px;
         line-height: 20px;
@@ -55,13 +55,25 @@ a {
 
 .logo {
     margin-left: 157px;
-    padding: 10px 0 10px 0;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    height: 100%;
 
-    @media (width <= 900px) {
+    @media (max-width:900px) {
         margin-left: 40px;
     }  
 
-    @media (width <= 600px) {
+    @media (max-width:600px) {
         margin-left: 20px;
     }  
+
+    @media (max-width:360px) {
+        width: 105px;
+        height: 85px;
+    }  
+}
+
+.svg {
+    width: 100%;
+    height: 100%;
 }
